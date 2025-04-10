@@ -152,7 +152,7 @@ p {
 }
 
 .templatemo-item {
-	max-width: 80px; 
+	max-width: 80px;
 	border-radius: 23px;
 }
 
@@ -845,7 +845,6 @@ Most Popular Style
 }
 
 .most-popular .item ul {
-  float: right;
   margin-top: 20px;
 }
 
