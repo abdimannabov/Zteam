@@ -51,8 +51,8 @@ https://templatemo.com/tm-579-cyborg-gaming
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <img src="{% static 'images/logo.png' %}" alt="">
+                    <a href="{% url 'index' %}" class="logo">
+                        <img src="{% static 'images/Zteam.png' %}" alt="">
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Search End ***** -->
@@ -67,7 +67,6 @@ https://templatemo.com/tm-579-cyborg-gaming
                     <ul class="nav">
                         <li><a href="{% url 'index' %}">Home</a></li>
                         <li><a href="{% url 'browse' %}">Browse</a></li>
-                        <li><a href="{% url 'details' %}">Details</a></li>
                         <li><a href="{% url 'streams' %}">Streams</a></li>
                         <li><a href="{% url 'profile' %}" class="active">Profile <img src="{% static 'images/profile-header.jpg' %}" alt=""></a></li>
                     </ul>   

@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from .models import Games
+from .models import Game
 
 # Create your views here.
 def index(request):
-    games = Games.objects.all()
+    games = Game.objects.all()
     context = {
         'games':games,
         'title':"Zteam"
@@ -13,8 +13,13 @@ def index(request):
 def browse(request):
     return render(request, 'store/browse.html')
 
-def details(request):
-    return render(request, 'store/details.html')
+def details(request, pk):
+    game = Game.objects.get(pk=pk)
+    context = {
+        'game':game,
+        'title':"Details"
+    }
+    return render(request, 'store/details.html', context)
 
 def streams(request):
     return render(request, 'store/streams.html')

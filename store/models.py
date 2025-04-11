@@ -1,7 +1,9 @@
 from django.db import models
+from django.db import models
+import datetime
 
 # Create your models here.
-class Games(models.Model):
+class Game(models.Model):
     GENRES = [
         ('AC', "Action"),
         ('Sh', "Shooter"),
@@ -14,6 +16,8 @@ class Games(models.Model):
     downloads = models.FloatField(default=0.0, null=False)
     storage = models.IntegerField(default=0, null=False)
     genre = models.CharField(max_length=2, choices=GENRES, default="AC")
+    added_at = models.DateTimeField(default=datetime.date.today)
+    played_hours = models.IntegerField(default=40)
     image = models.ImageField()
 
     def __str__(self):
