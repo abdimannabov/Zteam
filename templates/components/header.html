@@ -1,0 +1,42 @@
+{% load static %}
+
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="{% url 'index' %}" class="logo">
+                        <img src="{% static 'images/Zteam.png' %}" alt="">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Search End ***** -->
+                    <div class="search-input">
+                        <form id="search" action="#">
+                            <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword"
+                                   onkeypress="handle"/>
+                            <i class="fa fa-search"></i>
+                        </form>
+                    </div>
+                    <!-- ***** Search End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="{% url 'index' %}" class="active">Home</a></li>
+                        <li><a href="{% url 'browse' %}">Browse</a></li>
+                        <li><a href="{% url 'streams' %}">Streams</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'profile' %}">Profile <img src="{% static 'images/profile-header.jpg' %}"
+                                                                       alt=""></a></li>
+                        {% else %}
+                        <li style="margin-top: 5px"><a href="{% url 'login' %}">Registratsiya</a></li>
+                        {% endif %}
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

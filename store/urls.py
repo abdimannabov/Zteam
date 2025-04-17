@@ -6,5 +6,7 @@ urlpatterns = [
     path('browse/', browse, name="browse"),
     path('details/<int:pk>/', details, name="details"),
     path('streams/', streams, name="streams"),
-    path('profile/', profile, name="profile")
+    path('profile/', profile, name="profile"),
+    path('login/', user_login, name="login"),
+    path('signin/', signin, name="signin")
 ]
