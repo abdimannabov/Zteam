@@ -8,7 +8,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Profile</title>
+    <title>{{ title }}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -55,14 +55,6 @@ https://templatemo.com/tm-579-cyborg-gaming
                         <img src="{% static 'images/Zteam.png' %}" alt="">
                     </a>
                     <!-- ***** Logo End ***** -->
-                    <!-- ***** Search End ***** -->
-                    <div class="search-input">
-                      <form id="search" action="#">
-                        <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-                        <i class="fa fa-search"></i>
-                      </form>
-                    </div>
-                    <!-- ***** Search End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li><a href="{% url 'index' %}">Home</a></li>
@@ -96,11 +88,10 @@ https://templatemo.com/tm-579-cyborg-gaming
                   </div>
                   <div class="col-lg-4 align-self-center">
                     <div class="main-info header-text">
-                      <span>Offline</span>
-                      <h4>Alan Smithee</h4>
-                      <p>You Haven't Gone Live yet. Go Live By Touching The Button Below.</p>
+                      <span>Online</span>
+                      <h4>{{ username }}</h4>
                       <div class="main-border-button">
-                        <a href="#">Start Live Stream</a>
+                        <a href="{% url 'logout' %}">Logout</a>
                       </div>
                     </div>
                   </div>

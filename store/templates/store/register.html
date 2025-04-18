@@ -1,10 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% load static %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block header %}
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="{% url 'index' %}" class="logo">
+                        <img src="{% static 'images/Zteam.png' %}" alt="">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="{% url 'index' %}" class="active">Home</a></li>
+                        <li><a href="{% url 'browse' %}">Browse</a></li>
+                        <li><a href="{% url 'streams' %}">Streams</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'profile' %}">Profile <img src="{% static 'images/profile-header.jpg' %}"
+                                                                       alt=""></a></li>
+                        {% else %}
+                        <li style="margin-top: 5px"><a href="{% url 'login' %}">Registratsiya</a></li>
+                        {% endif %}
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<style>
+    body {
+      overflow: hidden; /* disables scrolling */
+    }
+</style>
+{% endblock header %}
+
+{% block main%}
+<section class="py-5 bg-dark">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}success{% endif %}" role="alert">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div>
+                    <div class="card shadow-lg border border-primary text-white text-left h-100">
+                        <div class="card-body bg-dark p-4 p-xl-5">
+                            <h2 class="pb-3 text-center">Register</h2>
+                            <form method="post" action="{% url 'signup' %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label class="form-label">Username</label>
+                                    {{ register_form.username }}
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">E-Mail</label>
+                                    {{ register_form.email }}
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    {{ register_form.password1 }}
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Password (repeat)</label>
+                                    {{ register_form.password2 }}
+                                </div>
+                                <button class="btn btn-success btn-lg" type="submit">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}

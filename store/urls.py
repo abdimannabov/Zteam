@@ -8,5 +8,8 @@ urlpatterns = [
     path('streams/', streams, name="streams"),
     path('profile/', profile, name="profile"),
     path('login/', user_login, name="login"),
-    path('signin/', signin, name="signin")
+    path('signin/', signin, name="signin"),
+    path('register/', user_register, name="register"),
+    path('singup', signup, name="signup"),
+    path('logout/', user_logout, name="logout"),
 ]

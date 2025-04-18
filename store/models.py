@@ -2,7 +2,25 @@ from django.db import models
 from django.db import models
 import datetime
 
+from django.urls import reverse
+
+
 # Create your models here.
+class Category(models.Model):
+    title = models.CharField(max_length=50, verbose_name="Category Name")
+    image = models.ImageField(upload_to="categories/", blank=True, null=True)
+    genre = models.SlugField(unique=True)
+
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+
+    def get_absolute_url(self):
+        return reverse("category", kwargs={"genre": self.genre})
+
+    def __str__(self) -> str:
+        return self.title
+
 class Game(models.Model):
     GENRES = [
         ('AC', "Action"),
